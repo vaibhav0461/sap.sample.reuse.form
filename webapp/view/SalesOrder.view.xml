@@ -1,0 +1,32 @@
+<mvc:View controllerName="sa.sap.sample.reuse.form.controller.SalesOrder" 
+		  xmlns:html="http://www.w3.org/1999/xhtml"
+		  xmlns:mvc="sap.ui.core.mvc" 
+		  displayBlock="true" 
+		  xmlns="sap.m" 
+		  xmlns:c="sap.custom.controls.form">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Custom Form Sample">
+				<content>
+					<c:Form id="idSalesOrderDetails" 
+								  entityTypeName="Soheaderdata" 
+								  title="Sales Order Details" 
+								  editable="true" 
+								  visible="true" 
+								  mode="{FormDataModel>/displayMode}"
+								  modelName="FormDataModel" 
+								  dataPath="/data" />
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="Save" visible="{=${FormDataModel>/displayMode} !== 'D'}" press="onSalesOrderSave" />
+							<Button text="Edit" visible="{=${FormDataModel>/displayMode} === 'D'}" press="onSalesOrderEdit" />
+							<Button text="Display" visible="{=${FormDataModel>/displayMode} !== 'D'}" press="onSalesOrderDisplay"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
